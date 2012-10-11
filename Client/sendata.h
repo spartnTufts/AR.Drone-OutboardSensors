@@ -1,7 +1,14 @@
 /***********************************************************
- ** sendata.h is a modified version of navdata.h
+ **  sendata.h
  **
- ** J.Weeks Tufts University 08/07/2012
+ **  This is a modified version of navdata.h rewritten to
+ **  interface with and display the information from a third 
+ **  party sensor array.
+ **
+ **  (C) J.Weeks Tufts University 08/07/2012
+ **
+ **  navdata.h (C) PARROT SA 2007-2011
+ **
  **********************************************************/
 
 #ifndef _SENDATA_H_

@@ -1,3 +1,11 @@
+#
+# ARDroneLib custom.makefile
+# 
+# (C) PARROT SA 2007-2011
+#
+# customizations (#custom) by J.Weeks Tufts University 2011-2012
+#
+
 #########################################################
 # Common definitions (CUSTOM)
 #########################################################
@@ -14,7 +22,7 @@ ifndef USE_ANDROID
 USE_ANDROID          = no
 endif
 ifndef USE_LINUX
-USE_LINUX            = yes
+USE_LINUX            = yes #custom
 endif
 MAJOR_VERSION        = 0
 MINOR_VERSION        = 0

@@ -2,7 +2,7 @@
  **  ardrone_sendata_client.c
  **
  **  This is a modified version of ardrone_navdata_client.c 
- **  rewritten to accomidate data input from an outboard 
+ **  rewritten to accommodate data input from an outboard 
  **  sensor array.
  **
  **  (C) J.Weeks Tufts University 07/18/2012
@@ -11,25 +11,14 @@
  **
  ***********************************************************/
 
-//#include <errno.h>
-//#include <string.h>
-
-//#include <config.h>
-
 #include <VP_Os/vp_os_print.h>
-//#include <VP_Com/vp_com.h>
 
-//#include <ardrone_api.h>
 #include <ardrone_tool/ardrone_tool.h>
 #include <ardrone_tool/Sendata/ardrone_sendata_client.h>
 #include <ardrone_tool/Com/config_com.h>
 
 #ifndef _WIN32
 #include <sys/socket.h>
-//#include <sys/ioctl.h>
-//#include <netinet/in.h>
-//#include <netinet/tcp.h>
-//#include <unistd.h>
 #endif
 
 static bool_t sendata_thread_in_pause = TRUE;

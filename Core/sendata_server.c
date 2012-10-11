@@ -2,7 +2,7 @@
  **  sendata_server.c
  **
  **  Server for Arduino responsible for initialization and 
- **  packing of sendata for transmission to transceiver
+ **  packing of sendata for transmission to transceiver.
  **
  **  (C) J.Weeks Tufts University 07/25/2012
  **

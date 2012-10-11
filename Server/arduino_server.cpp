@@ -3,8 +3,8 @@
  **
  ** Server core program to be loaded on to Arduino.
  ** This is the primary file to be compiled by the
- ** Arduino compiler and used to run the outboard sensor
- ** array.
+ ** Arduino compiler and used to run the outboard
+ ** sensor array.
  **
  ** (C) J.Weeks Tufts University 07/26/2012
  **
@@ -40,7 +40,7 @@ uint16_t* s270_0p;
 
 void setup(void)
 {
-  delay(30000); //wait for drone to come online
+  delay(30000); //wait for drone to come on-line
   //Serial.begin(9600);  //Debug
   WIFI_SERIAL.begin(WIFI_BAUD);
   pinMode(WIFI_RST_PIN, OUTPUT);
@@ -53,7 +53,7 @@ void setup(void)
   delay(500);
 
   //config_wifi();
-  //initilize sensor vars
+  //initialize sensor vars
   s0_0p=&(sendatas.ir_measures.s0_0);
   *s0_0p=0;
   s90_0p=&(sendatas.ir_measures.s90_0);

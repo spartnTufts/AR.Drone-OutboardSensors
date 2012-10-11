@@ -2,7 +2,7 @@
  **  ardrone_general_sendata.h
  **
  **  This is a modified version of ardrone_general_navdata.h 
- **  rewritten to accomidate data input from an outboard 
+ **  rewritten to accommodate data input from an outboard 
  **  sensor array.
  **
  **  (C) J.Weeks Tufts University 07/18/2012
@@ -28,4 +28,3 @@ C_RESULT ardrone_general_sendata_process( const sendata_unpacked_t* const sendat
 C_RESULT ardrone_general_sendata_release( void );
 
 #endif //! _ARDRONE_SENDATA_GENERAL_H_
-

@@ -3,7 +3,7 @@
  **
  **  File to store user variables similar to config.makefile
  **  and config.h.  This file is used to provide a central 
- **  store and avioid the need to modify mutiple makefiles 
+ **  store and avoid the need to modify multiple makefiles 
  **  and/or set make flags.
  **
  **  (C) J.Weeks Tufts University 07/19/2012

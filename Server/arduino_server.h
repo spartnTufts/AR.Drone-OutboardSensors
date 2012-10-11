@@ -15,7 +15,7 @@
 
 /**
  * @fn config_wifi
- * @brief loads configuration to transciever //not functional
+ * @brief loads configuration to transceiver //not functional
  */
 void config_wifi(void);
 

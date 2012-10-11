@@ -1,3 +1,11 @@
+#
+# ARDroneLib Makefile
+# 
+# (C) PARROT SA 2007-2011
+#
+# customizations (#custom) by J.Weeks Tufts University 2011-2012
+#
+
 NO_COLOR=\033[0m
 OK_COLOR=\033[32;01m
 

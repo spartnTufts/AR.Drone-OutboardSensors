@@ -2,8 +2,8 @@
  **  sendata.h
  **
  **  This is a modified version of a subset of ardrone_api.h
- **  specificaly the section labled NAVDATA FUNCTIONS 
- **  rewritten to accomidate data input from an outboard 
+ **  specifically the section labeled NAVDATA FUNCTIONS 
+ **  rewritten to accommodate data input from an outboard 
  **  sensor array.
  **  
  **  (C) J.Weeks Tufts University 07/18/2012
@@ -17,16 +17,10 @@
 
 #ifndef _ARDUINO_
 #include <ardrone_api.h>
-//#include <ardrone_common_config.h>
-//#include <ATcodec/ATcodec_api.h>
-//#include <navdata_common.h>
-//#include <vision_common.h>
 #include <VP_Os/vp_os_malloc.h>
-//#include <Maths/quaternions.h>
 #include <ardrone_tool/Sendata/sendata_common.h>
 #include <ardrone_tool/Sendata/sendata_config.h>
 #else
-//#include <stdint.h>
 #include <sendata_common.h>
 #include <sendata_config.h>
 #include <string.h>

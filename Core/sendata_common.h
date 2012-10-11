@@ -14,14 +14,7 @@
 #ifndef _SENDATA_COMMON_H_
 #define _SENDATA_COMMON_H_
 
-#ifndef _ARDUINO_
-//#include <config.h>
-//#include <vision_common.h>
-
-//#include <VP_Os/vp_os_types.h>
-//#include <Maths/maths.h>
-//#include <Maths/matrices.h>
-#else
+#ifdef _ARDUINO_
 #include <stdint.h>
 #endif
 

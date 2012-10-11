@@ -2,7 +2,7 @@
  **  ardrone_general_sendata.c
  **
  **  This is a modified version of ardrone_general_navdata.c 
- **  rewritten to accomidate data input from an outboard 
+ **  rewritten to accommodate data input from an outboard 
  **  sensor array.
  **
  **  (C) J.Weeks Tufts University 07/18/2012
@@ -11,14 +11,8 @@
  **
  ***********************************************************/
 
-//#include <stdio.h>
-//#include <sys/time.h>
-//#include <ardrone_api.h>
-//#include <ardrone_tool/ardrone_tool.h>
-//#include <ardrone_tool/ardrone_tool_configuration.h>
 #include <ardrone_tool/Sendata/ardrone_sendata_client.h>
 #include <ardrone_tool/Sendata/ardrone_general_sendata.h>
-//#include <utils/ardrone_gen_ids.h>
 
 
 static SENDATA_REQUEST_STATE sendataState;

@@ -1,11 +1,14 @@
 /***********************************************************
- ** sendata.c is a modified version of navdata.c
- ** The purpose of this program is to interface with and 
- ** display the information from a third party sensor array
- ** this program may be merged with navdata.c for better
- ** functionality in the future.
+ **  sendata.c
  **
- ** J.Weeks Tufts University 08/07/2012
+ **  This is a modified version of navdata.c rewritten to
+ **  interface with and display the information from a third 
+ **  party sensor array.
+ **
+ **  (C) J.Weeks Tufts University 08/07/2012
+ **
+ **  navdata.c (C) PARROT SA 2007-2011
+ **
  **********************************************************/
 
 #include <ardrone_tool/Sendata/ardrone_sendata_client.h>

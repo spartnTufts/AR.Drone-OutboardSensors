@@ -1,6 +1,6 @@
 # Arduino makefile
 #
-# Origional Author: Unknown
+# Original Author: Unknown
 # 
 # Customized to work for the Sendata protocol 
 # with the Parrot ARDrone and an Arduino Mega2560 
@@ -33,7 +33,7 @@
 #  2. Below, modify the line containing "TARGET" to refer to the name of
 #     of your program's file without an extension (e.g. TARGET = foo).
 #
-#  3. Modify the line containg "ARDUINO" to point the directory that
+#  3. Modify the line containing "ARDUINO" to point the directory that
 #     contains the Arduino core (for normal Arduino installations, this
 #     is the lib/targets/arduino sub-directory).
 #
@@ -125,7 +125,7 @@ CSTANDARD = -std=gnu99
 CDEBUG = -g$(DEBUG)
 CWARN = -Wall -Wstrict-prototypes
 CTUNING = -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums
-CEXTRA = -D_ARDUINO_ #Flag enabling compilation of shared ARD libaries for Arduino -JW
+CEXTRA = -D_ARDUINO_ #Flag enabling compilation of shared ARD libraries for Arduino -JW
 
 CFLAGS = $(CDEBUG) $(CDEFS) $(CINCS) -O$(OPT) $(CWARN) $(CSTANDARD) $(CEXTRA)
 CXXFLAGS = $(CDEFS) $(CINCS) -O$(OPT)

@@ -2,7 +2,7 @@
  **  sendata_keys.h
  **
  **  This is a modified version of navdata_keys.h rewritten  
- **  to accomidate data input from an outboard sensor array.
+ **  to accommodate data input from an outboard sensor array.
  **  
  **  (C) J.Weeks Tufts University 07/18/2012
  **

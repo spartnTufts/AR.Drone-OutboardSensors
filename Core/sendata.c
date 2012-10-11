@@ -2,7 +2,7 @@
  **  sendata.c
  **
  **  This is a modified version of navdata.c rewritten to 
- **  accomidate data input from an outboard sensor array.
+ **  accommodate data input from an outboard sensor array.
  **
  **  (C) J.Weeks Tufts University 07/18/2012
  **
@@ -19,7 +19,6 @@
 #include <ardrone_tool/Sendata/sendata.h>
 
 #else
-//#include <stdint.h>
 #include <sendata.h>
 #endif
 

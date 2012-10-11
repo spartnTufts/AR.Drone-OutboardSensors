@@ -2,7 +2,7 @@
  **  ardrone_sendata_client.h
  **
  **  This is a modified version of ardrone_navdata_client.h 
- **  rewritten to accomidate data input from an outboard 
+ **  rewritten to accommodate data input from an outboard 
  **  sensor array.
  **
  **  (C) J.Weeks Tufts University 07/18/2012
@@ -17,11 +17,9 @@
 #include <VP_Os/vp_os_types.h>
 #include <VP_Api/vp_api_thread_helper.h>
 
-//#include <ardrone_api.h>
 #include <ardrone_tool/Sendata/sendata.h>
 #include <ardrone_tool/Control/ardrone_sendata_control.h>
 #include <ardrone_tool/Sendata/ardrone_general_sendata.h>
-//#include <config.h>
 
 #define SENDATA_MAX_RETRIES	5
 

@@ -1,3 +1,11 @@
+#
+# linux_sdk_demo Makefile
+# 
+# (C) PARROT SA 2007-2011
+#
+# customizations (#custom) by J.Weeks Tufts University 2011-2012
+#
+
 SDK_PATH:=$(shell pwd)/../../../../ARDroneLib
 PC_TARGET=yes
 USE_LINUX=yes

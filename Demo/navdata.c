@@ -1,3 +1,11 @@
+/**
+ * @file navdata.c
+ * @copyright PARROT SA 2007-2011 
+ *
+ * @customizations (//custom //sendata) by J.Weeks Tufts University 2011-2012
+ *
+ */
+
 #include <ardrone_tool/Navdata/ardrone_navdata_client.h>
 
 #include <Navdata/navdata.h>
@@ -9,8 +17,8 @@ inline C_RESULT demo_navdata_client_init( void* data )
   return C_OK;
 }
 
-/* Receving navdata during the event loop */
-inline C_RESULT demo_navdata_client_process( const navdata_unpacked_t* const navdata )
+/* Receiving navdata during the event loop */
+inline C_RESULT demo_navdata_client_process( const navdata_unpacked_t* const navdata ) //custom
 {
 	const navdata_demo_t*nd = &navdata->navdata_demo;
 	snav=navdata;//make navdata accessible to sendata thread
@@ -41,4 +49,3 @@ inline C_RESULT demo_navdata_client_release( void )
 BEGIN_NAVDATA_HANDLER_TABLE
   NAVDATA_HANDLER_TABLE_ENTRY(demo_navdata_client_init, demo_navdata_client_process, demo_navdata_client_release, NULL)
 END_NAVDATA_HANDLER_TABLE
-

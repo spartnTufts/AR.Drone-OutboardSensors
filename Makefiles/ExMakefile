@@ -1,9 +1,17 @@
-#shortcut for building SDK demos
-#(C) J.Weeks Tufts University 2011/08/12
+#
+# Demo Running Makefile
+#
+# shortcut for building SDK demos
+#
+# (C) J.Weeks Tufts University 2011/08/12
+#
 
 #local sdkdir/Examples/Linux/Build/
 #navtarg sdkdir/Examples/Linux/Navigation/Build
 #demtarg sdkdir/Examples/Linux/sdk_demo/Build
+
+#Default
+all: help
 
 #Release versions
 
@@ -75,8 +83,13 @@ rmtmp:
 	find . -type f -name *~ -print0 | xargs -0 /bin/rm -v
 
 help:
-	@echo Release Builds: nav, cnav, dem, cdem
-	@echo Debug Builds: dnav, cdnav, ddem, cddem
-	@echo Quick Run: rdd \(ddem\), rd \(dem\)
-	@echo Remove all non-config files: clean
-	@echo Remove all tmp files: rmtmp
+	@echo ""
+	@echo "  Release Builds: nav, cnav, dem, cdem"
+	@echo "  Debug Builds: dnav, cdnav, ddem, cddem"
+	@echo "  (c* rules are cleaners ie cnav cleans nav)"
+	@echo "  Quick Build & Run: rdd (ddem), rd (dem)"
+	@echo "  Remove all non-config files: clean"
+	@echo "  Remove all tmp files: rmtmp"
+	@echo ""
+
+.PHONY: all nav cnav dem cdem dnav cdnav cdem cddem cls rst rdd rd clean rmtmp help

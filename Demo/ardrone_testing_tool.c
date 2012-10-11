@@ -2,7 +2,11 @@
  * @file main.c
  * @author sylvain.gaeremynck@parrot.com
  * @date 2009/07/01
+ *
+ * @customizations (//custom //sendata) by J.Weeks Tufts University 2011-2012
+ *
  */
+
 #include <ardrone_testing_tool.h>
 
 //ARDroneLib
@@ -34,7 +38,7 @@ static int32_t exit_ihm_program = 1;
 C_RESULT ardrone_tool_init_custom(int argc, char **argv)
 {
   /* Registering for a new device of game controller */
-  ardrone_tool_input_add( &ps3pad );
+  ardrone_tool_input_add( &ps3pad ); //custom ( &gamepad );
 
   /* Start all threads of your application */
   START_THREAD( video_stage, NULL );
@@ -53,7 +57,7 @@ C_RESULT ardrone_tool_shutdown_custom()
   JOIN_THREAD( video_stage );
 
   /* Unregistering for the current device */
-  ardrone_tool_input_remove( &ps3pad );
+  ardrone_tool_input_remove( &ps3pad ); //custom ( &gamepad );
 
   //Sendata
   ardrone_sendata_client_shutdown();

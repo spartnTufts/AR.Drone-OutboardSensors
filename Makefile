@@ -1,8 +1,12 @@
+#
+# Package Installer Makefile
+#
 # Installer program for the Sendata Server Package
+#  
 # (C) J.Weeks Tufts University 10/10/2012
-
+#
 # See help rule for instructions.
-
+#
 
 SDKPATH = 
 COREDIR = $(SDKPATH)/ARDroneLib/Soft/Lib/ardrone_tool
@@ -102,9 +106,8 @@ help:
 	@echo "    This will overwrite the previously installed files."
 	@echo ""
 	@echo " 5. Call sync_package to run a sync between the Package and"
-	@echo "    Installed files, updating the Package files to the newest"
-	@echo "    version. (For resyncing during Git updates/development"
-	@echo "    only.)"
+	@echo "    Installed files, updating the respective files to the"
+	@echo "    newest version. (For re-syncing during Git updates only.)"
 	@echo ""
 
 .PHONY: all install install_fresh sync_package core client control server cpsafe cpow cpud install_sdkmods mkdirs sdk help
