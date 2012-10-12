@@ -19,11 +19,11 @@ MKDIR = mkdir -pv
 all: help
 
 install: cpsafe core control server client
-	@$(CP) Makefiles/ArduinoMakefile $(SDKPATH)/SendataServer/Makefile
+	@$(CP) Makefiles/ServerMakefile $(SDKPATH)/SendataServer/Makefile
 	@$(CP) SendataREADME.pdf $(SDKPATH)/
 
 install_fresh: cpow core control server client
-	@$(CP) Makefiles/ArduinoMakefile $(SDKPATH)/SendataServer/Makefile
+	@$(CP) Makefiles/ServerMakefile $(SDKPATH)/SendataServer/Makefile
 	@$(CP) SendataREADME.pdf $(SDKPATH)/
 
 install_sdkmods: cpow sdk
@@ -69,7 +69,7 @@ mkdirs:
 
 sync_package: cpud mkdirs sdk core client control server
 #remaining sync from package
-	@$(CP) Makefiles/ArduinoMakefile $(SDKPATH)/SendataServer/Makefile
+	@$(CP) Makefiles/ServerMakefile $(SDKPATH)/SendataServer/Makefile
 	@$(CP) SendataREADME.pdf $(SDKPATH)/
 #sync from installed
 #sendata
