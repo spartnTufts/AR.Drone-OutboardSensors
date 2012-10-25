@@ -80,7 +80,7 @@ clean:  cnav cdem cdnav cddem
 
 rmtmp:
 	@cd ../ && \
-	find . -type f -name *~ -print0 | xargs -0 /bin/rm -v
+	find . -type f -name *~ -print0 | xargs -0 /bin/rm -fv
 
 help:
 	@echo ""

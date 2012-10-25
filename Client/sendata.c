@@ -35,9 +35,8 @@ uint16_t ave180;
 uint16_t ave270;
 
 uint8_t indx; //array index
-int i;
+int i, c;
 char toggle, msgst, fltmode;
-float32_t psi, tgpsi;
 
 /* Initialization local variables before event loop  */
 inline C_RESULT demo_sendata_client_init( void* data )
@@ -50,6 +49,7 @@ inline C_RESULT demo_sendata_client_init( void* data )
   toggle=0;
   msgst=0;
   fltmode=0;
+  c=0;
   return C_OK;
 }
 
@@ -76,6 +76,13 @@ inline C_RESULT demo_sendata_client_process( const sendata_unpacked_t* const sen
   indx++;
   if(indx==FS) indx=0; //wrap around
 
+  //reset averages
+  ave0=0;
+  ave90=0;
+  ave180=0;
+  ave270=0;
+
+  //create averages
   for(i=0; i<FS; i++) 
     {
       ave0+=sensdat0[i];
@@ -88,12 +95,13 @@ inline C_RESULT demo_sendata_client_process( const sendata_unpacked_t* const sen
   ave180=ave180/FS;
   ave270=ave270/FS;
 
-  //control section
+
+
+  // em state toggle demo - flip emergency state based on senosor reading
+  /*
   if(ave0>120) toggle=1;
   else toggle=0;
 
-  // em state toggle demo
-  /*
   if(toggle==1)
     {
       if(msgst==0) //if message sent 
@@ -105,8 +113,11 @@ inline C_RESULT demo_sendata_client_process( const sendata_unpacked_t* const sen
     }
   else msgst=0;
   */
-  //takeoff land control demo
+  //takeoff land control demo - takeoff and land based on sensor reading
   /*
+  if(ave0>120) toggle=1;
+  else toggle=0;
+
   if(toggle==1)
     {
       if(msgst==0) //if message not yet sent
@@ -119,8 +130,11 @@ inline C_RESULT demo_sendata_client_process( const sendata_unpacked_t* const sen
   else msgst=0;
   */
 
-  //auto land demo
+  //auto land demo - land based on sensor reading
   /*
+  if(ave0>120) toggle=1;
+  else toggle=0;
+
   if(toggle==1 && nd!=NULL && nd->altitude>150) //if flying
     {
       ardrone_tool_set_ui_pad_start(0); //send land command
@@ -128,41 +142,45 @@ inline C_RESULT demo_sendata_client_process( const sendata_unpacked_t* const sen
   if(nd!=NULL && nd->altitude<500) ardrone_at_set_progress_cmd(1,0,0,1,0);
   else ardrone_at_set_progress_cmd(0,0,0,0,0);
   */  
-  //begin auto flight demo
-  /*
+  //begin auto flight demo -- hull on
+  /* 
   if(nd!=NULL && nd->altitude>150) //only act when airborne
     {
       //land command
-      if(ave180>100) ardrone_tool_set_ui_pad_start(0);
+      //if(ave180>100) ardrone_tool_set_ui_pad_start(0);
   
       //left/right avoidance
-      //if(ave90>70) while(ave90>35) ardrone_at_set_progress_cmd(1,(ave90-30)/70,0,0,0);
-      //if(ave270>70) while(ave270>35) ardrone_at_set_progress_cmd(1,-(ave270-30)/70,0,0,0);
+      //if(ave90>200) while(ave90>150) ardrone_at_set_progress_cmd(1,(ave90-150)/100,0,0.7,0);
+      //if(ave270>200) while(ave270>150) ardrone_at_set_progress_cmd(1,-(ave270-150)/100,0,0.7,0);
 
       //general flight
-      if(ave0>140) //rotate left 90deg if object detected 
+      if(ave0>80 && (c==0 || c<0)) //rotate right 90deg if front object detected 
 	{
+	  c=100; //set rotation counter
+	}
 
-//	  psi=nd->psi;
-	  //psi=psi/1000;
-//	  if(psi-90000<-179000) tgpsi=-179000-(psi-90000); //wraparound error
-//	  else tgpsi=psi-90000;
-//	  while(abs(nd->psi-tgpsi)<1) ardrone_at_set_progress_cmd(1,0,0,0,-1); //rotate ccw
-
-	  i=0;
-	  while(i<600)
-	    {
-	      ardrone_at_set_progress_cmd(1,0,0,0,-1);
-	      i++;
-	    }
-	  }
-      else ardrone_at_set_progress_cmd(1,0,-0.01,0,0); //fly forward slowly
+      if(c>0) //rotate if c>0
+	{
+	  ardrone_at_set_progress_cmd(1,0,0,0,-0.75);
+	  c--;
+	}
+      if(c<11 && c>0) //restore altitude
+	{
+	  //ardrone_at_set_progress_cmd(1,0,0,1,0);
+	  c--;
+	}
+      else ardrone_at_set_progress_cmd(1,-0.025,-0.02,0.70,0); //fly forward slowly
     }
-*/
-  //end auto flight demo
+    //end auto filght demo -- hull on
+  */  
 
-  if(ave0>140) ardrone_at_set_progress_cmd(1,0,-0.05,0,0);
-  if(ave180>100) ardrone_at_set_progress_cmd(1,0,0.05,0,0);
+  //begin auto flight demo -- no hull
+  if(ave0>100) //rotate left 90deg if front object detected
+    {
+      ardrone_at_set_progress_cmd(1,0,0,0,-0.75);
+    }
+  else ardrone_at_set_progress_cmd(0,0,0,0,0);
+  //end auto flight demo -- no hull
 
   //display section
  	printf("                                                                             \n");
@@ -176,8 +194,8 @@ inline C_RESULT demo_sendata_client_process( const sendata_unpacked_t* const sen
 	       ir_m->s0_0,ave0,ir_m->s90_0,ave90);
 	printf("s180_0: %i, Ave: %i       s270_0: %i, Ave: %i                                \n", \
 	       ir_m->s180_0,ave180,ir_m->s270_0,ave270);
-	printf("Time          : %i:%i.%i                                                     \n", \
-	       min,sec,micros/*sendata->sendata_time.time*/);
+	printf("Time          : %i:%i.%i      Rotation Counter: %i                           \n", \
+	       min,sec,micros,c/*sendata->sendata_time.time*/);
 
        	printf("\033[9A");
 

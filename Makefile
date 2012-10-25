@@ -8,7 +8,7 @@
 # See help rule for instructions.
 #
 
-SDKPATH = 
+SDKPATH = ../sdk1.8
 COREDIR = $(SDKPATH)/ARDroneLib/Soft/Lib/ardrone_tool
 SERVERDIR = $(SDKPATH)/SendataServer/source
 DEMODIR = $(SDKPATH)/Examples/Linux/sdk_demo/Sources
@@ -77,7 +77,7 @@ sync_package: cpud mkdirs sdk core client control server
 	@$(CP) $(COREDIR)/Control/ardrone_sendata* Control/
 	@$(CP) $(SERVERDIR)/* Server/
 	@$(CP) $(DEMODIR)/Sendata/* Client/
-	@$(CP) $(SERVERDIR)/../Makefile Makefiles/ArduinoMakefile
+	@$(CP) $(SERVERDIR)/../Makefile Makefiles/ServerMakefile
 #other key SDK programs
 	@$(CP) $(SDKPATH)/ARDroneLib/Soft/Build/custom.makefile Makefiles/custom.makefile
 	@$(CP) $(SDKPATH)/ARDroneLib/Soft/Lib/Build/Makefile Makefiles/CoreMakefile
@@ -87,6 +87,8 @@ sync_package: cpud mkdirs sdk core client control server
 	@$(CP) $(DEMODIR)/Navdata/navdata.h Demo/navdata.h
 	@$(CP) $(DEMODIR)/Navdata/navdata.c Demo/navdata.c 
 	@$(CP) $(SDKPATH)/Examples/Linux/Build/ardrone.xml Demo/ardrone.xml 
+#remove any temp files carried over
+	@find . -type f -name *~ -print0 | xargs -0 /bin/rm -fv
 
 help:
 	@echo ""
